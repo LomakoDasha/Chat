@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import DisplayConversation from './DisplayConversation';
+import MessagingBox from './MessagingBox';
 
 class MessagingPanel extends Component {
     state = {
@@ -16,10 +17,18 @@ class MessagingPanel extends Component {
         }
     }
 
+    getMessage = (message) => {
+        const data = {from: "Dasha", message: message}
+        console.log(data)
+        this.connection.send(JSON.stringify(data))
+        // this.setState({messages: [...this.state.messages, message]})
+    }
+
   render () {
     return (
       <>
         <DisplayConversation messages={this.state.messages}/>
+        <MessagingBox getMessage={this.getMessage}/>
       </>
     )
   }
