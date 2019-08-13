@@ -1,12 +1,28 @@
 import React, { Component } from 'react';
 
+import Login from './Login'
 import MessagingPanel from './MessagingPanel'
 
 class App extends Component {
+  state = {
+    from: null
+  }
+
+  setFrom = (from) => {
+    this.setState({from})
+    console.log(from)
+  }
+
   render () {
     return (
       <div className="App">
-        <MessagingPanel />      
+      {
+        !this.state.from ?
+          <Login setFrom={this.setFrom}/>
+          :
+          <MessagingPanel from={this.state.from}/>
+      }
+      
       </div>
     );
   }

@@ -18,7 +18,7 @@ class MessagingPanel extends Component {
     }
 
     getMessage = (message) => {
-        const data = {from: "Dasha", message: message}
+        const data = {from: this.props.from, message: message}
         console.log(data)
         this.connection.send(JSON.stringify(data))
         // this.setState({messages: [...this.state.messages, message]})
