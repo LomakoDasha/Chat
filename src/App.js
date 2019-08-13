@@ -5,7 +5,7 @@ import MessagingPanel from './MessagingPanel'
 
 class App extends Component {
   state = {
-    from: null
+    from: localStorage["username"]
   }
 
   setFrom = (from) => {

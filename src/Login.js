@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 class Login extends Component {
     login = (e) => {
         e.preventDefault()
-        this.props.setFrom(e.target.from.value)
+        const username = e.target.from.value
+        this.props.setFrom(username)
+        localStorage.setItem("username", username);
     }
 
   render () {
