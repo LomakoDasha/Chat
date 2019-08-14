@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import Login from './Login'
-import MessagingPanel from './MessagingPanel'
+import Login from './components/login/Login'
+import MessagingPanel from './components/messagingPanel/MessagingPanel'
 
 class App extends Component {
   state = {

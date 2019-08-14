@@ -9,7 +9,7 @@ class DisplayConversation extends Component {
     console.log(this.props.messages)
     return (
       <div id="displayConversation">
-        { this.props.messages.map(items => this.displayMessage(items)) }
+        { this.props.messages.map(items => this.displayMessage(items.reverse())) }
       </div>
     )
   }

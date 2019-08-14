@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
-import DisplayConversation from './DisplayConversation';
-import MessagingBox from './MessagingBox';
+import Header from '../header/header'
+import DisplayConversation from './conversation/DisplayConversation';
+import MessagingBox from './messagingBox/MessagingBox';
 
 class MessagingPanel extends Component {
     state = {
@@ -27,6 +28,7 @@ class MessagingPanel extends Component {
   render () {
     return (
       <>
+        <Header />
         <DisplayConversation messages={this.state.messages}/>
         <MessagingBox getMessage={this.getMessage}/>
       </>
