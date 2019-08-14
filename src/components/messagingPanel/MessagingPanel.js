@@ -9,7 +9,7 @@ class MessagingPanel extends Component {
         messages: []
     }
 
-    connection = new WebSocket('wss://wssproxy.herokuapp.com/')
+    connection = new WebSocket('ws://st-chat.shas.tel')
 
     componentDidMount() {
         this.connection.onmessage = (message) => {
