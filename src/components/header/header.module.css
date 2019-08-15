@@ -3,7 +3,7 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(128, 124, 124);
+    background-color: rgb(61, 73, 65);
 }
 
 .header__title {
