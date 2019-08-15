@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
-import headerStyles from './header.module.css'
-
+import headerStyles from './header.module.css';
 class Header extends Component {
     logOut = (e) => {
         e.preventDefault();

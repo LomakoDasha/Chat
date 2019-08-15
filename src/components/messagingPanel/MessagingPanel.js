@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Header from '../header/header'
 import DisplayConversation from './conversation/DisplayConversation';
 import MessagingBox from './messagingBox/MessagingBox';
+import MessagePanelStyles from './Panel.module.css';
 
 class MessagingPanel extends Component {
     state = {
@@ -27,11 +28,11 @@ class MessagingPanel extends Component {
 
   render () {
     return (
-      <>
-        <Header />
-        <DisplayConversation messages={this.state.messages}/>
-        <MessagingBox getMessage={this.getMessage}/>
-      </>
+      <div className={MessagePanelStyles.app}>
+        <Header  className={MessagePanelStyles.header} />
+        <DisplayConversation className={MessagePanelStyles.conversation} messages={this.state.messages}/>
+        <MessagingBox className={MessagePanelStyles.messageBox} getMessage={this.getMessage}/>
+      </div>
     )
   }
   
