@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class DisplayConversation extends Component {
 
-    displayMessage = (items) => items.map(item => <div>{item.from}: {item.message}</div>)
+    displayMessage = (items) => items.map(item => <div key={item.id}>{item.from}: {item.message}</div>)
 
   render () {
     console.log("receive")
