@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ScrollToBottom from 'react-scroll-to-bottom';
 import DisplayConversationStyles from './Conversation.module.css';
 
 class DisplayConversation extends Component {
@@ -29,9 +30,11 @@ class DisplayConversation extends Component {
     console.log("receive")
     console.log(this.props.messages)
     return (
-      <div id="displayConversation" className={DisplayConversationStyles.container}>
-        { this.props.messages.map(items => this.displayMessage(items.reverse())) }
-      </div>
+      <ScrollToBottom className={DisplayConversationStyles.wrapper}>
+        <div id="displayConversation" className={DisplayConversationStyles.container}>
+          { this.props.messages.map(items => this.displayMessage(items.reverse())) }
+        </div>
+      </ScrollToBottom>
     )
   }
   
