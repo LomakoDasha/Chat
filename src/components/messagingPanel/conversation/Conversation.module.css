@@ -1,6 +1,50 @@
 .container {
-  background-color: rgb(202, 226, 226);
+  background-color: rgb(213, 226, 221);
   overflow-x: scroll;  
   height: 900px;
   width: 100%;
+  display: flex; 
+  flex-direction: column;
+  padding: 10px;
+}
+
+.otherMessage {
+  border-radius: calc(1em * 20 / 16);
+  padding: calc(1em * 8 / 16) calc(1em * 15 / 16);
+  margin: calc(1em * 5 / 16) 0;
+  display: inline-block;
+  align-items: flex-start;
+  margin-right: 60%;
+  background-color: rgb(240, 237, 192);
+  position: relative;
+}
+
+.myMessage {
+  border-radius: calc(1em * 20 / 16);
+  padding: calc(1em * 8 / 16) calc(1em * 15 / 16);
+  margin: calc(1em * 5 / 16) 0;
+  display: inline-block;
+  align-items: flex-end;
+  margin-left: 60%;
+  background-color: rgb(127, 218, 135);
+  position: relative;
+}
+
+.username {
+  font-family: helvetica;
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgb(90, 89, 89);
+}
+
+.time {
+  color: rgb(139, 132, 132);
+  font-weight: 400;
+}
+
+.messageText {
+  font-family: helvetica;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: rgb(0, 0, 0);
 }
