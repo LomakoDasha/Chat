@@ -3,15 +3,15 @@ import TextField from '@material-ui/core/TextField';
 
 const KeyEnter = 13;
 class MessagingBox extends Component {
-    messageHandler = (e) => {
-        if(e.keyCode === KeyEnter) {
-            e.preventDefault()
-            this.props.getMessage(e.target.value)
-            e.target.value = ""
-        }
-    } 
+  messageHandler = (e) => {
+    if (e.keyCode === KeyEnter) {
+      e.preventDefault();
+      this.props.getMessage(e.target.value);
+      e.target.value = "";
+    }
+  }
 
-  render () {
+  render() {
     return (
       <div id="messagingBox" >
         <TextField
@@ -28,7 +28,7 @@ class MessagingBox extends Component {
       </div>
     )
   }
-  
+
 }
 
 export default MessagingBox;

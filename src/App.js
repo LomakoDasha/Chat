@@ -5,28 +5,27 @@ import MessagingPanel from './components/messagingPanel/MessagingPanel'
 
 class App extends Component {
   state = {
-    from: localStorage["username"]
+    from: JSON.parse(localStorage.getItem('username'))
   }
 
   setFrom = (from) => {
-    this.setState({from})
-    console.log(from)
+    this.setState({ from });
+    console.log('from', from)
   }
 
-  render () {
+  render() {
     return (
       <div className="App">
-      {
-        !this.state.from ?
-          <Login setFrom={this.setFrom}/>
-          :
-          <MessagingPanel from={this.state.from}/>
-      }
-      
+        {
+          !this.state.from
+            ? <Login setFrom={this.setFrom} />
+            : <MessagingPanel from={this.state.from.username} />
+        }
+
       </div>
     );
   }
-  
+
 }
 
 export default App;

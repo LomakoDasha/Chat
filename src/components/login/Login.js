@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
 
 class Login extends Component {
-    login = (e) => {
-        e.preventDefault()
-        const username = e.target.usernameInput.value
-        this.props.setFrom(username)
-        localStorage.setItem("username", username);
-    }
+  usernameObj = {
+    username: '',
+    password: ''
+  };
 
-  render () {
+  login = (e) => {
+    e.preventDefault()
+    this.usernameObj.username = e.target.usernameInput.value;
+    this.usernameObj.password = e.target.passwordInput.value;
+
+    this.props.setFrom(this.usernameObj)
+    localStorage.setItem('username', JSON.stringify(this.usernameObj));
+  }
+
+  render() {
     return (
       <div className="container h-100 w-70 mt-5">
         <div className="row justify-content-center align-items-center">
@@ -16,26 +23,35 @@ class Login extends Component {
             <h3 className="h3 mt-5 mb-3 font-weight-normal" align="center">Please log in</h3>
             <div className="form-group">
               <label>Username:</label>
-              <input 
+              <input
                 type="text"
                 id="usernameInput"
                 className="form-control"
                 name="username"
                 placeholder="Enter username"
               />
+
+              <label>Password:</label>
+              <input
+                type="text"
+                id="passwordInput"
+                className="form-control"
+                name="password"
+                placeholder="Enter password"
+              />
             </div>
-          
-            <button 
+
+            <button
               type="submit"
               className="btn btn-lg btn-primary btn-block">
-                Log in
+              Log in
             </button>
           </form>
         </div>
       </div>
     )
   }
-  
+
 }
 
 export default Login;
