@@ -21,7 +21,6 @@ class App extends Component {
             ? <Login setFrom={this.setFrom} />
             : <MessagingPanel from={this.state.from.username} />
         }
-
       </div>
     );
   }
