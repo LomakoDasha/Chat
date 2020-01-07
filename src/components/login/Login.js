@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Login extends Component {
   usernameObj = {
@@ -7,7 +8,6 @@ class Login extends Component {
   };
 
   login = (e) => {
-    e.preventDefault()
     this.usernameObj.username = e.target.usernameInput.value;
     this.usernameObj.password = e.target.passwordInput.value;
 
@@ -51,7 +51,10 @@ class Login extends Component {
       </div>
     )
   }
-
 }
+
+Login.propTypes = {
+  setFrom: PropTypes.func.isRequired,
+};
 
 export default Login;

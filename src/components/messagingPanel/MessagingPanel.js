@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Header from '../header/header'
 import DisplayConversation from './conversation/DisplayConversation';
@@ -49,7 +50,10 @@ class MessagingPanel extends Component {
       </div>
     )
   }
-
 }
+
+MessagingPanel.propTypes = {
+  messages: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default MessagingPanel;

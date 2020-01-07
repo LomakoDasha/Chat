@@ -3,8 +3,7 @@ import headerStyles from './header.module.css';
 import Button from '@material-ui/core/Button';
 
 class Header extends Component {
-  logOut = (e) => {
-    e.preventDefault();
+  logOut = () => {
     localStorage.removeItem('username');
     window.location = 'Chat/src/components/login/Login.js';
   }
@@ -19,7 +18,6 @@ class Header extends Component {
       </header>
     )
   }
-
 }
 
 export default Header;

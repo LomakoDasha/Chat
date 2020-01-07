@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
+import PropTypes from 'prop-types';
+
 import DisplayConversationStyles from './Conversation.module.css';
 
 class DisplayConversation extends Component {
@@ -27,6 +29,7 @@ class DisplayConversation extends Component {
   })
 
   render() {
+    console.log("typeof this.props.messages", typeof this.props.messages)
     console.log("receive this.props.messages", this.props.messages)
     return (
       <ScrollToBottom className={DisplayConversationStyles.wrapper}>
@@ -36,7 +39,10 @@ class DisplayConversation extends Component {
       </ScrollToBottom>
     )
   }
-
 }
+
+DisplayConversation.propTypes = {
+  messages: PropTypes.arrayOf(PropTypes.array).isRequired,
+};
 
 export default DisplayConversation;

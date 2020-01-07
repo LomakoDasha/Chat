@@ -15,7 +15,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
         {
           !this.state.from
             ? <Login setFrom={this.setFrom} />
@@ -24,7 +24,6 @@ class App extends Component {
       </div>
     );
   }
-
 }
 
 export default App;

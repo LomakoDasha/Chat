@@ -5,7 +5,6 @@ const KeyEnter = 13;
 class MessagingBox extends Component {
   messageHandler = (e) => {
     if (e.keyCode === KeyEnter) {
-      e.preventDefault();
       this.props.getMessage(e.target.value);
       e.target.value = "";
     }
