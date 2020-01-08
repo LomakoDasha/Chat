@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import ReconnectingWebSocket from 'reconnecting-websocket';
 
 import Header from '../header/header'
 import DisplayConversation from './conversation/DisplayConversation';
@@ -13,7 +14,7 @@ class MessagingPanel extends Component {
     messages: []
   }
 
-  connection = new WebSocket('ws://st-chat.shas.tel');
+  connection = new ReconnectingWebSocket('ws://st-chat.shas.tel', null, { reconnectInterval: 3000 });
 
   componentDidMount() {
     Notification.requestPermission().then(() => {
