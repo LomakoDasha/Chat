@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 
 const KeyEnter = 13;
@@ -27,7 +28,10 @@ class MessagingBox extends Component {
       </div>
     )
   }
-
 }
 
 export default MessagingBox;
+
+MessagingBox.propTypes = {
+  getMessage: PropTypes.func.isRequired,
+};

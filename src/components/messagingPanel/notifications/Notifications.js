@@ -1,6 +1,16 @@
+import PropTypes from 'prop-types';
+
 function Notifications(data) {
-  if (data.length === 1) {
-    new Notification(data[0].from, { body: data[0].message });
-  }
+  new Notification(data.from, { body: data.message });
 }
+
 export default Notifications;
+
+Notifications.propTypes = {
+  data: PropTypes.shape({
+    time: PropTypes.number,
+    id: PropTypes.string,
+    from: PropTypes.string,
+    message: PropTypes.string,
+  }).isRequired,
+};

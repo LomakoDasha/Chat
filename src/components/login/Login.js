@@ -53,8 +53,8 @@ class Login extends Component {
   }
 }
 
+export default Login;
+
 Login.propTypes = {
   setFrom: PropTypes.func.isRequired,
 };
-
-export default Login;

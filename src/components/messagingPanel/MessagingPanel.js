@@ -33,7 +33,7 @@ class MessagingPanel extends Component {
       addMessages(data);
 
       if (this.blured) {
-        Notifications(data);
+        Notifications(data[0]);
       }
     }
   }
@@ -48,7 +48,7 @@ class MessagingPanel extends Component {
     return (
       <div className={MessagePanelStyles.app}>
         <Header className={MessagePanelStyles.header} />
-        <DisplayConversation className={MessagePanelStyles.conversation} messages= { messages } />
+        <DisplayConversation className={MessagePanelStyles.conversation} messages={ messages } />
         <MessagingBox className={MessagePanelStyles.messageBox} getMessage={ this.getMessage } />
       </div>
     )
@@ -61,4 +61,5 @@ export default connect((state) => ({
 
 MessagingPanel.propTypes = {
   messages: PropTypes.objectOf(PropTypes.array),
+  addMessages: PropTypes.func.isRequired,
 };
