@@ -9,7 +9,7 @@ const messages = (state = MESSAGES, { newMessages, type }) => {
     case ADD_MESSAGES:
       return {
         ...state,
-        messages: [...state.messages, ...newMessages],
+        messages: [...newMessages, ...state.messages],
       };
     default:
       return state;
