@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import headerStyles from './header.module.css';
 import Button from '@material-ui/core/Button';
+
+import styles from './header.module.css';
 
 class Header extends Component {
   logOut = () => {
@@ -10,8 +11,8 @@ class Header extends Component {
 
   render() {
     return (
-      <header className={headerStyles.header}>
-        <h1 className={headerStyles.header__title}>Chat</h1>
+      <header className={styles.header}>
+        <h1 className={styles.header__title}>Chat</h1>
         <Button variant="contained" color="primary" size="medium" onClick={this.logOut}>
           Log out
           </Button>

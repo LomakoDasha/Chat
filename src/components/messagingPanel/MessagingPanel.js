@@ -8,10 +8,15 @@ import Header from '../header/header'
 import DisplayConversation from './conversation/DisplayConversation';
 import MessagingBox from './messagingBox/MessagingBox';
 import Notifications from './notifications/Notifications';
-import MessagePanelStyles from './Panel.module.css';
+import styles from './Panel.module.css';
 
 class MessagingPanel extends Component {
-  blured = false;
+  constructor(props) {
+    super(props);
+    this.state = {
+      blured: false,
+    };
+  }
 
   connection = new ReconnectingWebSocket('ws://st-chat.shas.tel', null, { reconnectInterval: 3000 });
 
@@ -20,11 +25,11 @@ class MessagingPanel extends Component {
     });
 
     window.onblur = () => {
-      this.blured = true;
+      this.setState({ blured: true });
     };
 
     window.onfocus = () => {
-      this.blured = false;
+      this.setState({ blured: false });
     };
 
     this.connection.onmessage = (message) => {
@@ -32,7 +37,7 @@ class MessagingPanel extends Component {
       const { addMessages } = this.props;
       addMessages(data);
 
-      if (this.blured) {
+      if (this.state.blured) {
         Notifications(data[0]);
       }
     }
@@ -44,12 +49,13 @@ class MessagingPanel extends Component {
   }
 
   render() {
-    const { messages } = this.props.messages;
+    const { from, messages } = this.props;
+    
     return (
-      <div className={MessagePanelStyles.app}>
-        <Header className={MessagePanelStyles.header} />
-        <DisplayConversation className={MessagePanelStyles.conversation} messages={ messages } />
-        <MessagingBox className={MessagePanelStyles.messageBox} getMessage={ this.getMessage } />
+      <div className={styles.app}>
+        <Header className={styles.header} />
+        <DisplayConversation className={styles.conversation} username={from} messages={messages.messages} />
+        <MessagingBox className={styles.messageBox} getMessage={this.getMessage} />
       </div>
     )
   }

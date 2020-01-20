@@ -4,16 +4,18 @@ import Login from './components/login/Login'
 import MessagingPanel from './components/messagingPanel/MessagingPanel'
 
 class App extends Component {
-  state = {
-    from: JSON.parse(localStorage.getItem('username'))
+  constructor(props) {
+    super(props);
+    this.state = {
+      from: JSON.parse(localStorage.getItem('username')),
+    };
   }
 
   setFrom = (from) => {
     this.setState({ from });
-    console.log('from', from)
   }
 
-  render() {
+  render() { 
     return (
       <div>
         {
