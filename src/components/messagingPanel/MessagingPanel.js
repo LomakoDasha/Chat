@@ -18,7 +18,7 @@ class MessagingPanel extends Component {
     };
   }
 
-  connection = new ReconnectingWebSocket('ws://st-chat.shas.tel', null, { reconnectInterval: 3000 });
+  connection = new ReconnectingWebSocket('wss://wssproxy.herokuapp.com/', null, { reconnectInterval: 3000 });
 
   componentDidMount() {
     Notification.requestPermission().then(() => {
