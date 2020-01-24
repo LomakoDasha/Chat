@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ReconnectingWebSocket from 'reconnecting-websocket';
 import { connect } from 'react-redux';
 
 import { addMessages } from '../../store/actions/actionCreator';
@@ -18,8 +17,6 @@ class MessagingPanel extends Component {
     };
   }
 
-  connection = new ReconnectingWebSocket('wss://wssproxy.herokuapp.com/', null, { reconnectInterval: 3000 });
-
   componentDidMount() {
     Notification.requestPermission().then(() => {
     });
@@ -32,12 +29,12 @@ class MessagingPanel extends Component {
       this.setState({ blured: false });
     };
 
-    this.connection.onmessage = (message) => {
+    this.props.connection.onmessage = (message) => {
       const data = JSON.parse(message.data);
       const { addMessages } = this.props;
       addMessages(data);
 
-      if (this.state.blured) {
+      if (this.state.blured && data.length === 1) {
         Notifications(data[0]);
       }
     }
@@ -45,15 +42,15 @@ class MessagingPanel extends Component {
 
   getMessage = (message) => {
     const data = { from: this.props.from, message: message };
-    this.connection.send(JSON.stringify(data));
+    this.props.connection.send(JSON.stringify(data));
   }
 
   render() {
-    const { from, messages } = this.props;
+    const { from, messages, removeFrom } = this.props;
     
     return (
       <div className={styles.app}>
-        <Header className={styles.header} />
+        <Header className={styles.header} removeFrom={removeFrom}/>
         <DisplayConversation className={styles.conversation} username={from} messages={messages.messages} />
         <MessagingBox className={styles.messageBox} getMessage={this.getMessage} />
       </div>

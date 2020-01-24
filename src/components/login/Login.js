@@ -8,10 +8,12 @@ class Login extends Component {
   };
 
   login = (e) => {
+    e.preventDefault();
     this.usernameObj.username = e.target.usernameInput.value;
     this.usernameObj.password = e.target.passwordInput.value;
-
-    this.props.setFrom(this.usernameObj)
+    
+    const { setFrom } = this.props;
+    setFrom(this.usernameObj);
     localStorage.setItem('username', JSON.stringify(this.usernameObj));
   }
 

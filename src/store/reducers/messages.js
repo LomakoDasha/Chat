@@ -1,4 +1,4 @@
-import { ADD_MESSAGES } from '../constants';
+import { ADD_MESSAGES, DELETE_MESSAGES } from '../constants';
 
 const MESSAGES = {
   messages: [],
@@ -11,6 +11,13 @@ const messages = (state = MESSAGES, { newMessages, type }) => {
         ...state,
         messages: [...newMessages, ...state.messages],
       };
+
+    case DELETE_MESSAGES:
+      return {
+        ...state,
+        messages: [],
+      };
+
     default:
       return state;
   }
