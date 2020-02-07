@@ -1,14 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { CircularProgress } from '@material-ui/core';
 
 import { addMessages } from '../../store/actions/actionCreator';
-import Header from '../header/header'
-import DisplayConversation from './conversation/DisplayConversation';
+import Header from '../header/header';
 import MessagingBox from './messagingBox/MessagingBox';
 import Notifications from './notifications/Notifications';
 import styles from './Panel.module.css';
 
+const DisplayConversation = React.lazy(() => new Promise(resolve => {
+  setTimeout(() => {
+    resolve(import('./conversation/DisplayConversation'))
+  }, 1000)
+}));
 class MessagingPanel extends Component {
   constructor(props) {
     super(props);
@@ -47,11 +52,13 @@ class MessagingPanel extends Component {
 
   render() {
     const { from, messages, removeFrom } = this.props;
-    
+
     return (
       <div className={styles.app}>
-        <Header className={styles.header} removeFrom={removeFrom}/>
-        <DisplayConversation className={styles.conversation} username={from} messages={messages.messages} />
+        <Header className={styles.header} removeFrom={removeFrom} />
+        <Suspense fallback={<CircularProgress className={styles.spinner}/>}>
+          <DisplayConversation className={styles.conversation} username={from} messages={messages.messages} />
+        </Suspense>
         <MessagingBox className={styles.messageBox} getMessage={this.getMessage} />
       </div>
     )
@@ -63,6 +70,9 @@ export default connect((state) => ({
 }), { addMessages })(MessagingPanel);
 
 MessagingPanel.propTypes = {
+  from: PropTypes.string.isRequired,
+  connection: PropTypes.object.isRequired,
+  removeFrom: PropTypes.func.isRequired,
   messages: PropTypes.objectOf(PropTypes.array),
   addMessages: PropTypes.func.isRequired,
 };
